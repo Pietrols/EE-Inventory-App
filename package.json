@@ -1,0 +1,28 @@
+{
+  "name": "ee-inventory-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pietrols/EE-Inventory-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Pietrols/EE-Inventory-App/issues"
+  },
+  "homepage": "https://github.com/Pietrols/EE-Inventory-App#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.1",
+    "nodemon": "^3.1.11"
+  }
+}
