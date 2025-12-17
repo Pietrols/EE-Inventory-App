@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
-    <!-- Basic Tailwind CSS setup for aesthetics -->
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-gray-100 min-h-screen p-4 md:p-8">
@@ -18,7 +17,6 @@
       <p class="text-gray-600 mb-6">
         Select a discipline to view its specific courses and inventory items.
       </p>
-
       <a
         href="/disciplines/create"
         class="inline-block px-6 py-2 bg-green-600 text-white font-semibold rounded-lg shadow-md hover:bg-green-700 transition duration-300 mb-8"
@@ -30,18 +28,40 @@
       <ul class="space-y-4">
         <% disciplineList.forEach(discipline => { %>
         <li
-          class="p-4 bg-blue-50 hover:bg-blue-100 rounded-lg shadow-sm border border-blue-200 transition duration-150 ease-in-out"
+          class="flex justify-between p-4 bg-blue-50 hover:bg-blue-100 rounded-lg shadow-sm border border-blue-200 transition duration-150 ease-in-out"
         >
-          <a
-            href="/disciplines/<%= discipline.id %>"
-            class="text-lg font-bold text-blue-700 hover:text-blue-900 transition duration-150"
-          >
-            <%= discipline.name %>
-          </a>
-          <p class="text-sm text-gray-500 mt-1">
-            (<%= discipline.description.substring(0, 70) %><% if
-            (discipline.description.length > 70) { %>...<% } %>)
-          </p>
+          <div>
+            <a
+              href="/disciplines/<%= discipline.id %>"
+              class="text-lg font-bold text-blue-700 hover:text-blue-900 transition duration-150"
+            >
+              <%= discipline.name %>
+            </a>
+            <p class="text-sm text-gray-500 mt-1">
+              (<%= discipline.description.substring(0, 70) %><% if
+              (discipline.description.length > 70) { %>...<% } %>)
+            </p>
+          </div>
+          <div class="flex gap-2">
+            <a
+              href="/disciplines/<%= discipline.id %>/update"
+              class="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+              >Edit</a
+            >
+            <form
+              action="/disciplines/<%= discipline.id %>/delete"
+              method="POST"
+              style="display: inline"
+            >
+              <button
+                type="submit"
+                onclick="return confirm('Delete this discipline? This action cannot be undone.')"
+                class="px-6 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 transition duration-300"
+              >
+                Delete
+              </button>
+            </form>
+          </div>
         </li>
         <% }) %>
       </ul>
